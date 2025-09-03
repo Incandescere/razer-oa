@@ -1,6 +1,5 @@
 terraform{
-    # source = "../../../../modules/iam"
-    source = "C:/Users/bryan/Desktop/dev/iac-modules/iam"
+    source = "git@github.com:Incandescere/iac-modules.git//iam"
 }
 
 include "root" {
