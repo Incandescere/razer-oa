@@ -1,6 +1,5 @@
 terraform{
-    # source = "../../../modules/ecs-cluster"
-    source = "C:/Users/bryan/Desktop/dev/iac-modules/ecs-cluster"
+    source = "git@github.com:Incandescere/iac-modules.git//ecs-cluster"
 }
 
 include "root" {
@@ -14,5 +13,5 @@ locals {
 
 inputs = {
     project_name = local.project_name
-    cluster_name = ""
+    cluster_name = "cluster"
 }
