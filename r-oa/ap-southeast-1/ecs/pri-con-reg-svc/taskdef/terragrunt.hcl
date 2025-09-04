@@ -1,4 +1,5 @@
 terraform{
+    # source = "C:/Users/bryan/Desktop/dev/iac-modules/ecs-taskdef"
     source = "git@github.com:Incandescere/iac-modules.git//ecs-taskdef"
 }
 
@@ -18,11 +19,15 @@ dependency loggroup {
     config_path = "../loggroup"
 }
 
+dependency s3bucket {
+    config_path = "../../../s3-pri-con-reg"
+}
+
 locals {
     account_vars = read_terragrunt_config(find_in_parent_folders("account.hcl"))
     service_vars = read_terragrunt_config(find_in_parent_folders("service.hcl"))
     project_name = local.account_vars.locals.project_name
-    svc_name = local.service_vars.locals.service_name
+    svc_name     = local.service_vars.locals.service_name
 }
 
 inputs = {
@@ -38,9 +43,8 @@ inputs = {
 
     #=========================================================
     # populating the tpl file
-
-    portName      = local.svc_name
     containerName = local.svc_name
+    portName      = local.svc_name
     image         = "registry:latest"
     loggroup      = dependency.loggroup.outputs.id
     containerPort = 5000

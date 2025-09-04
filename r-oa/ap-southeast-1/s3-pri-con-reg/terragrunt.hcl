@@ -15,5 +15,5 @@ locals {
 inputs = {
     account_no = local.account_no
     project_name = local.project_name
-    bucket_name = "private-container-registry"
+    bucket_name = "pri-con-reg"
 }

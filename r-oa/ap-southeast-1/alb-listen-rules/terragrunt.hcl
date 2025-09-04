@@ -46,7 +46,7 @@ inputs = {
     lb_listener_port     = 80
     
     listener_rules = [
-        # [["/*"], dependency.tg.outputs.tg_id],
+        [["/*"], dependency.tg.outputs.tg_id],
     ]
 
     //leave out to disable logging
