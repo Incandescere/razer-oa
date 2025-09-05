@@ -14,9 +14,14 @@ dependency subnets {
     config_path = "../subnets"
 }
 
-dependency tg {
+dependency registry_tg {
     config_path = "../ecs/pri-con-reg-svc/targetgrp"
 }
+
+dependency yeasy_tg {
+    config_path = "../ecs/yeasy/targetgrp"
+}
+
 
 # dependency lblogs_bucket {
 #     config_path = "../lblogs-s3"
@@ -46,7 +51,8 @@ inputs = {
     lb_listener_port     = 80
     
     listener_rules = [
-        [["/*"], dependency.tg.outputs.tg_id],
+        [["/v2*"], dependency.registry_tg.outputs.tg_id],
+        [["/*"], dependency.yeasy_tg.outputs.tg_id],
     ]
 
     //leave out to disable logging
