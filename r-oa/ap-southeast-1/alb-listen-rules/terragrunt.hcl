@@ -56,7 +56,7 @@ inputs = {
     
     listener_rules = [
         [["/v2*"], dependency.registry_tg.outputs.tg_id],
-        [["/forward*"], dependency.nginx_tg.outputs.tg_id],
+        [["/nginx*"], dependency.nginx_tg.outputs.tg_id],
         [["/*"], dependency.yeasy_tg.outputs.tg_id],
     ]
 

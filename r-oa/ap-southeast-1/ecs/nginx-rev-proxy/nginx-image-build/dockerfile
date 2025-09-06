@@ -1,0 +1,19 @@
+# Use the official Nginx base image
+FROM nginx:latest
+
+# Remove the default Nginx configuration file
+RUN rm /etc/nginx/conf.d/default.conf
+
+# Copy the Nginx configuration file to the container
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Expose port 8080
+EXPOSE 8080
+
+# Start Nginx when the container launches
+# CMD ["nginx", "-g", "daemon off;"]
+
+# aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 690695877407.dkr.ecr.ap-southeast-1.amazonaws.com
+# docker build -t ecr-r-oa-nginx-rev-proxy-svc .
+# docker tag ecr-r-oa-nginx-rev-proxy-svc:latest 690695877407.dkr.ecr.ap-southeast-1.amazonaws.com/ecr-r-oa-nginx-rev-proxy-svc:latest
+# docker push 690695877407.dkr.ecr.ap-southeast-1.amazonaws.com/ecr-r-oa-nginx-rev-proxy-svc:latest
