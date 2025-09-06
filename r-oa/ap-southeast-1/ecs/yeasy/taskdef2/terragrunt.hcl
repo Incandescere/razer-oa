@@ -16,7 +16,7 @@ dependency taskrole {
 }
 
 dependency loggroup {
-    config_path = "../loggroup"
+    config_path = "../loggroup2"
 }
 
 # dependency s3bucket {
@@ -36,7 +36,7 @@ locals {
 
 inputs = {
     project_name       = local.project_name
-    name               = local.svc_name
+    name               = "${local.svc_name}-2"
     execution_role_arn = dependency.exerole.outputs.arn
     task_role_arn      = dependency.taskrole.outputs.arn
     cpu                = 256
@@ -47,8 +47,8 @@ inputs = {
 
     #=========================================================
     # populating the tpl file
-    containerName = local.svc_name
-    portName      = local.svc_name
+    containerName = "${local.svc_name}-2"
+    portName      = "${local.svc_name}-2"
     # image         = "18.136.196.178:5000/yeasy/simple-web"
     image         = "${dependency.ecr.outputs.url}:latest"
     loggroup      = dependency.loggroup.outputs.id

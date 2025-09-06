@@ -19,9 +19,9 @@ dependency loggroup {
     config_path = "../loggroup"
 }
 
-# dependency s3bucket {
-#     config_path = "../../../s3-pri-con-reg"
-# }
+dependency s3bucket {
+    config_path = "../../../s3-pri-con-reg"
+}
 
 dependency ecr {
     config_path = "../ecr"
@@ -49,8 +49,8 @@ inputs = {
     # populating the tpl file
     containerName = local.svc_name
     portName      = local.svc_name
-    # image         = "18.136.196.178:5000/yeasy/simple-web"
+    # image         = "18.136.186.178:5000/nginx-rev-proxy:latest"
     image         = "${dependency.ecr.outputs.url}:latest"
     loggroup      = dependency.loggroup.outputs.id
-    containerPort = 80
+    containerPort = 8080
 }

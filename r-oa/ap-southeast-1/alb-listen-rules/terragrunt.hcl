@@ -26,6 +26,15 @@ dependency yeasy_tg {
     config_path = "../ecs/yeasy/targetgrp"
 }
 
+dependency yeasy2_tg {
+    config_path = "../ecs/yeasy/targetgrp2"
+}
+
+dependency nginx_lb_tg {
+    config_path = "../ecs/nginx-lb/targetgrp"
+}
+
+
 
 # dependency lblogs_bucket {
 #     config_path = "../lblogs-s3"
@@ -56,8 +65,10 @@ inputs = {
     
     listener_rules = [
         [["/v2*"], dependency.registry_tg.outputs.tg_id],
+        [["/nginx/lb*"], dependency.nginx_lb_tg.outputs.tg_id],
         [["/nginx*"], dependency.nginx_tg.outputs.tg_id],
         [["/*"], dependency.yeasy_tg.outputs.tg_id],
+        [["/*"], dependency.yeasy2_tg.outputs.tg_id],
     ]
 
     //leave out to disable logging
