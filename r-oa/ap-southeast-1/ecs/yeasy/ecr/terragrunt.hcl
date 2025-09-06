@@ -1,5 +1,6 @@
 terraform{
-    source = "C:/Users/bryan/Desktop/dev/iac-modules/ecr"
+    # source = "C:/Users/bryan/Desktop/dev/iac-modules/ecr"
+    source = "git@github.com:Incandescere/iac-modules.git//ecr"
 }
 
 include "root" {

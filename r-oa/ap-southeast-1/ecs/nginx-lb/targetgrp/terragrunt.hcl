@@ -1,6 +1,6 @@
 terraform{
-    # source = "git@github.com:Incandescere/iac-modules.git//target-group"
-    source = "C:/Users/bryan/Desktop/dev/iac-modules/target-group"
+    source = "git@github.com:Incandescere/iac-modules.git//target-group"
+    # source = "C:/Users/bryan/Desktop/dev/iac-modules/target-group"
 }
 
 dependency vpc {

@@ -1,5 +1,4 @@
 terraform{
-    # source = "../../../modules/svc-conn-namespace"
     # source = "C:/Users/bryan/Desktop/dev/iac-modules/svc-conn-namespace"
     source = "git@github.com:Incandescere/iac-modules.git//svc-conn-namespace"
 }

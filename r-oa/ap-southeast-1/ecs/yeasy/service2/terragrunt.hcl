@@ -1,6 +1,6 @@
 terraform{
-    source = "C:/Users/bryan/Desktop/dev/iac-modules/ecs-service"
-    # source = "git@github.com:Incandescere/iac-modules.git//ecs-service"
+    # source = "C:/Users/bryan/Desktop/dev/iac-modules/ecs-service"
+    source = "git@github.com:Incandescere/iac-modules.git//ecs-service"
 }
 
 include "root" {
