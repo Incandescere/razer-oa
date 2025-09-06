@@ -23,6 +23,10 @@ dependency s3bucket {
     config_path = "../../../s3-pri-con-reg"
 }
 
+dependency ecr {
+    config_path = "../ecr"
+}
+
 locals {
     account_vars = read_terragrunt_config(find_in_parent_folders("account.hcl"))
     service_vars = read_terragrunt_config(find_in_parent_folders("service.hcl"))
@@ -45,7 +49,8 @@ inputs = {
     # populating the tpl file
     containerName = local.svc_name
     portName      = local.svc_name
-    image         = "18.136.186.178:5000/yeasy/simple-web"
+    # image         = "18.136.196.178:5000/yeasy/simple-web"
+    image         = "${dependency.ecr.outputs.url}:latest"
     loggroup      = dependency.loggroup.outputs.id
     containerPort = 80
 }

@@ -18,6 +18,10 @@ dependency registry_tg {
     config_path = "../ecs/pri-con-reg-svc/targetgrp"
 }
 
+dependency nginx_tg {
+    config_path = "../ecs/nginx-rev-proxy/targetgrp"
+}
+
 dependency yeasy_tg {
     config_path = "../ecs/yeasy/targetgrp"
 }
@@ -52,6 +56,7 @@ inputs = {
     
     listener_rules = [
         [["/v2*"], dependency.registry_tg.outputs.tg_id],
+        [["/forward*"], dependency.nginx_tg.outputs.tg_id],
         [["/*"], dependency.yeasy_tg.outputs.tg_id],
     ]
 
